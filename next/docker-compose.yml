@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: next
+    networks:
+      - public
+    ports:
+      - "8081:8081"
+
+networks:
+  public:
+    name: public-network
+    external: true

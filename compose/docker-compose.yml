@@ -1,0 +1,40 @@
+services:
+  nginx:
+    image: "jc21/nginx-proxy-manager:latest"
+    container_name: "nginx-ui"
+    restart: unless-stopped
+    ports:
+      - "80:80" # Public HTTP
+      - "4006:81" # Nginx UI
+      - "443:443" # Public HTTPS
+
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - public
+
+  database:
+    container_name: mysql
+    image: "mysql:8"
+    # ports:
+    #   - "9999:3306" # Optional: Only if you need external access
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=1234
+      - MYSQL_DATABASE=demo
+    volumes:
+      - ./data_db:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - private
+
+networks:
+  public:
+    name: public-network
+    driver: bridge
+    external: true
+  private:
+    name: private-network
+    driver: bridge

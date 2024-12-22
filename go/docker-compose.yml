@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: go-app
+    networks:
+      - private
+      - public
+    ports:
+      - "8080:8080"
+
+networks:
+  private:
+    name: private-network
+    external: true
+  public:
+    name: public-network
+    external: true
