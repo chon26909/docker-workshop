@@ -16,7 +16,7 @@ const HelloPage = () => {
 
   return (
     <div>
-      <h1>Hello from server</h1>
+      <h1 className="text-2xl font-bold">Hello from server</h1>
       <pre>data:{JSON.stringify(data, null, 2)}</pre>
     </div>
   );

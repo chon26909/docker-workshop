@@ -19,7 +19,7 @@ RUN go build -o main .
 ENV ENVIRONMENT=production
 
 # Expose the port the application runs on
-EXPOSE 8080
+EXPOSE 4000
 
 # Command to run the application
 CMD ["./main"]

@@ -1,0 +1,13 @@
+services:
+  nginx: 
+    image: nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - 80:80
+    networks:
+      - public
+
+networks:
+  public:
+    name: public-network
+    external: true

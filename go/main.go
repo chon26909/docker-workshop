@@ -29,10 +29,14 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	e.Use(middleware.CORS())
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		Skipper:      middleware.DefaultSkipper,
+		AllowOrigins: []string{"*"},
+		AllowMethods: []string{http.MethodGet, http.MethodHead, http.MethodPut, http.MethodPatch, http.MethodPost, http.MethodDelete},
+	}))
 
 	// Routes
-	e.GET("/", hello)
+	e.GET("/hello", hello)
 
 	// Start server
 	if err := e.Start(fmt.Sprintf(":%d", config.App.Port)); err != nil && !errors.Is(err, http.ErrServerClosed) {
