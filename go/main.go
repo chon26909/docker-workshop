@@ -36,6 +36,13 @@ func main() {
 	}))
 
 	// Routes
+	e.GET("/", func(c echo.Context) error {
+		message := map[string]string{
+			"message": fmt.Sprintf("server is running port %d", config.App.Port),
+		}
+		// Return JSON response
+		return c.JSON(http.StatusOK, message)
+	})
 	e.GET("/hello", hello)
 
 	// Start server
