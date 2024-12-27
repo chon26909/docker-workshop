@@ -3,11 +3,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        ENVIRONMENT: production
     container_name: next
     networks:
       - public
     ports:
       - "8081:8081"
+    environment:
+      - ENVIRONMENT=production
 
 networks:
   public:

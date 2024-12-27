@@ -25,8 +25,7 @@ COPY /nginx/nginx.conf /etc/nginx/conf.d/default.conf
 # Copy exported static files to Nginx's HTML directory
 COPY --from=builder /app/out /usr/share/nginx/html
 
-ARG ENVIRONMENT=production
-
+ARG ENVIRONMENT
 COPY .env.${ENVIRONMENT} .env
 
 # Expose ports
