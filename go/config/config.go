@@ -43,8 +43,6 @@ func InitConfig() *Config {
 	viper.SetConfigType("yml")
 	viper.AutomaticEnv()
 
-	// viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
-
 	err := viper.ReadInConfig()
 	if err != nil {
 		panic(fmt.Errorf("config file %v", err))

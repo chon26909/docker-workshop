@@ -1,5 +1,5 @@
 # Build the application
-FROM golang:alpine
+FROM golang:1.23
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -16,10 +16,11 @@ COPY . .
 # Build the application binary
 RUN go build -o main .
 
+# ENV
 ENV ENVIRONMENT=production
 
 # Expose the port the application runs on
-# EXPOSE 4000
+EXPOSE 4001
 
 # Command to run the application
 CMD ["./main"]
