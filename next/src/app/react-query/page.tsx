@@ -14,11 +14,13 @@ const DemoReactQuery = () => {
   };
 
   useEffect(() => {
-    if (isError) {
-      console.log("error", error);
-    } else {
-      if (data?.code === 1000) {
-        // navigate next page
+    if (isFetched) {
+      if (isError) {
+        console.log("error", error);
+      } else {
+        if (data?.code === 1000) {
+          // navigate next page
+        }
       }
     }
   }, [isFetched]);
